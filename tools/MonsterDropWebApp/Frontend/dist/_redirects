@@ -1,0 +1,8 @@
+# Cloudflare Pages Redirects Configuration
+
+# API proxy to backend (replace with your deployed backend URL)
+/api/* https://shaiya-monsterdrop-api.railway.app/api/:splat 200
+/hubs/* https://shaiya-monsterdrop-api.railway.app/hubs/:splat 200
+
+# SPA routing - redirect all non-asset requests to index.html
+/*    /index.html   200

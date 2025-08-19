@@ -22,7 +22,9 @@ class SignalRService {
   }
 
   private initializeConnection(): void {
-    const hubUrl = `${window.location.origin}/hubs/monsterdrop`;
+    const hubUrl = import.meta.env.VITE_SIGNALR_HUB_URL 
+      ? import.meta.env.VITE_SIGNALR_HUB_URL
+      : `${window.location.origin}/hubs/monsterdrop`;
     
     this.connection = new HubConnectionBuilder()
       .withUrl(hubUrl, {

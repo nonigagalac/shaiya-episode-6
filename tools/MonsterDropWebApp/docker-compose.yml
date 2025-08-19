@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  # Backend API Service
+  monsterdrop-api:
+    build:
+      context: ./Backend
+      dockerfile: Dockerfile
+    container_name: shaiya-monsterdrop-api
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:8080
+    volumes:
+      # Mount for logs (optional)
+      - ./logs:/app/logs
+    networks:
+      - monsterdrop-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/api/system/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Nginx reverse proxy for frontend (optional, if serving frontend via Docker)
+  monsterdrop-frontend:
+    image: nginx:alpine
+    container_name: shaiya-monsterdrop-frontend
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Frontend/dist:/usr/share/nginx/html
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - monsterdrop-api
+    networks:
+      - monsterdrop-network
+
+networks:
+  monsterdrop-network:
+    driver: bridge
+
+volumes:
+  logs:
+    driver: local
