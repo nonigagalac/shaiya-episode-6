@@ -1,0 +1,11 @@
+# Nixpacks configuration for Railway deployment
+[phases.setup]
+nixPkgs = []
+
+[phases.build]
+# Use Docker to build the application
+cmds = ["echo 'Using Dockerfile for build'"]
+
+# Specify that we're using a Dockerfile
+[build]
+builder = "dockerfile"

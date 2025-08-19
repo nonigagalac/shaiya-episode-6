@@ -59,11 +59,14 @@ if [ ! -f ".railway/railway.toml" ]; then
     echo -e "${YELLOW}⚠️  Project not linked to Railway${NC}"
     echo "Creating new Railway project..."
     
-    # Create new project
+    # Create new project with proper service configuration
     railway project:create "shaiya-monster-drop-api"
     
-    # Link to current directory
+    # Link to current directory  
     railway link
+    
+    # Set the build path to current directory (MonsterDropWebApp)
+    echo "Configuring Railway service for backend deployment..."
 else
     echo -e "${GREEN}✅ Project already linked${NC}"
 fi

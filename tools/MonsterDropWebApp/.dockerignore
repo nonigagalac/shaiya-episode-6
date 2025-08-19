@@ -1,0 +1,39 @@
+# Ignore frontend files since we only need backend for Railway
+Frontend/
+frontend/
+
+# Ignore documentation files
+*.md
+README.md
+DEPLOYMENT.md
+RAILWAY_DEPLOYMENT_STEPS.md
+MANUAL_DEPLOYMENT_INSTRUCTIONS.md
+
+# Ignore scripts
+*.sh
+*.cmd
+deploy.*
+
+# Ignore git files
+.git/
+.gitignore
+
+# Ignore Docker files not needed during build
+docker-compose.yml
+docker-compose.*.yml
+
+# Ignore Railway files
+.railway/
+
+# Ignore Visual Studio files
+.vs/
+.vscode/
+
+# Ignore bin and obj directories
+Backend/bin/
+Backend/obj/
+
+# Ignore other build artifacts
+*.user
+*.suo
+*.cache
