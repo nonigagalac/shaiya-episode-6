@@ -67,29 +67,43 @@ Your **Monster Drop Web Application** is now **production-ready** and committed 
 
 ## 🚂 **Step 3: Deploy Backend to Railway**
 
-### **Deploy from GitHub (Recommended)**
+### **🎯 Quick Railway Deployment (Recommended)**
 
-1. **Go to:** [Railway Dashboard](https://railway.app/dashboard)
+**We've created automated deployment scripts for you!**
 
-2. **Click "New Project" → "Deploy from GitHub repo"**
+**Linux/Mac:**
+```bash
+cd tools/MonsterDropWebApp
+./railway-deploy.sh
+```
 
-3. **Select:** `nonigagalac/shaiya-episode-6`
+**Windows:**
+```cmd
+cd tools\MonsterDropWebApp
+railway-deploy.cmd
+```
 
-4. **Configure deployment:**
+### **📋 Manual Railway Deployment Steps:**
+
+1. **Login to Railway:**
+   ```bash
+   railway login
    ```
-   Branch: genspark_ai_developer (or main after PR merge)
-   Root Directory: tools/MonsterDropWebApp/Backend
-   Build Command: dotnet publish --configuration Release --output ./publish
-   Start Command: dotnet MonsterDropWebAPI.dll
+
+2. **Deploy using our automated script:**
+   ```bash
+   ./railway-deploy.sh
    ```
 
-5. **Environment variables:**
-   ```
-   ASPNETCORE_ENVIRONMENT = Production
-   ASPNETCORE_URLS = http://0.0.0.0:$PORT
-   ```
+3. **Or deploy manually:**
+   - Go to: [Railway Dashboard](https://railway.app/dashboard)
+   - Create project from GitHub: `nonigagalac/shaiya-episode-6`
+   - Root Directory: `tools/MonsterDropWebApp/Backend`
+   - Environment variables: `ASPNETCORE_ENVIRONMENT=Production`
 
-6. **Railway will auto-deploy and provide a URL**
+4. **Get your Railway URL** (e.g., `https://your-app.up.railway.app`)
+
+📖 **Detailed Railway Instructions:** See `RAILWAY_DEPLOYMENT_STEPS.md`
 
 ---
 
